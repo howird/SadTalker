@@ -1,0 +1,15 @@
+services:
+  sadtalker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    runtime: nvidia
+    volumes:
+      - ./src:/root/src
+    ipc: host
+    tty: True
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
